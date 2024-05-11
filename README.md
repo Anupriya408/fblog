@@ -7,4 +7,5 @@
 
 ## Screenshots
 ![Screenshot](https://i.ibb.co/GRxNWZW/your-screenshot.png)
+![Screenshot](https://ibb.co/CHQCJtS)
 
