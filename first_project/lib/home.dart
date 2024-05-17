@@ -1,5 +1,5 @@
-// import 'package:first_project/main.dart';
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -7,11 +7,14 @@ void main() {
 class Product {
   final String name;
   final String imageUrl;
+  final String description;
+  final double price;
 
-Product({
+  Product({
     required this.name,
     required this.imageUrl,
-    
+    required this.description,
+    required this.price,
   });
 }
 
@@ -32,9 +35,9 @@ class HomePage extends StatelessWidget {
   final List<Product> products = List.generate(20, (index) => Product(
     name: 'Product ${index + 1}',
     imageUrl: 'https://tse1.mm.bing.net/th?id=OIP.EiLQxWQybyjEkZW1NhYrOwAAAA&pid=Api&P=0&h=180',
+    description: 'High Quality: Wall mounted hairdryer holder and cup made of stainless steel Product ${index + 1}.',
+    price: (index + 1) * 20.0, 
   ));
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +53,8 @@ class HomePage extends StatelessWidget {
               backgroundImage: NetworkImage(products[index].imageUrl),
             ),
             title: Text(products[index].name),
-            // subtitle: Text('\$${products[index]}'),
-            subtitle: const Text('For Description Click On Products....'),
+            subtitle: Text('\$${products[index].price.toStringAsFixed(2)}'),
+            isThreeLine: true,
             onTap: () {
               Navigator.push(
                 context,
@@ -93,16 +96,28 @@ class ProductDetailPage extends StatelessWidget {
               height: 300.0,
             ),
             const SizedBox(height: 10.0),
-           
+            Text(
+              'Price: \$${product.price.toStringAsFixed(4)}',
+              style: const TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 10.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                product.description,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 16.0),
+              ),
+            ),
+            const SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('Click Here To Go Back',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-              
+              child: const Text(
+                'Click Here To Go Back',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
-              
             ),
           ],
         ),
