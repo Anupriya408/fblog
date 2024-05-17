@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:first_project/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email address...!!';
                             }
-                          if (!value.endsWith('@gmail.com')) {
+                            if (!value.endsWith('@gmail.com')) {
                               return 'Please enter a valid email address..!!';
                             }
                             return null;
@@ -120,6 +121,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               if (_formKey.currentState?.validate() ?? false) {
                                 // Process login
+                                // Upon successful login, navigate to home.dart
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => HomePage()),
+                                );
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -140,8 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: TextButton(
                                   onPressed: () {},
                                   child: const Text(
@@ -156,8 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: TextButton(
                                   onPressed: () {},
                                   child: const Text(
